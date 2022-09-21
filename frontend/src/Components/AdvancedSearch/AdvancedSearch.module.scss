@@ -1,0 +1,15 @@
+.sectionAdvancedSearch {
+    &__wrapper {
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 16px;
+    }
+
+    &__link {
+        font-family: 'Roboto-regular';
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 16px;
+        color: rgba(25, 25, 25, 0.5);
+    }
+}

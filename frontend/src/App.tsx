@@ -5,6 +5,7 @@ import { Header } from './Components/Header/Header';
 import { Wrapper } from './Components/Wrapper/Wrapper';
 import { Main } from './Components/Main/Main';
 import { ObjectRegistry } from './Components/ObjectRegistry/ObjectRegistry';
+import { AdvancedSearch } from './Components/AdvancedSearch/AdvancedSearch';
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
       </BrowserRouter>
       <Main>
         <ObjectRegistry />
+        <AdvancedSearch />
       </Main>
     </Wrapper>
   );

@@ -7,7 +7,6 @@ export const ObjectRegistry: React.FC = () => {
     return (
         <section className={style.ObjectRegistry}>
             <div className={styleContainer.container + ' ' + style.ObjectRegistry__container}>
-
                 <h1 className={style.ObjectRegistry__title}>
                     Реестр объектов нематериального
                     культурного наследия народов россии
