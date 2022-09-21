@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux"
-import { getDataCards, getDataFetchNavigation } from "../Redux/action/dataAction"
+import { getDataCards, getDataNavigation } from "../Redux/action/dataAction"
 import { useTypeSelector } from "./useTypeSelector"
 import { useEffect } from 'react';
 
@@ -8,7 +8,7 @@ export const useGetCards = () => {
 
     useEffect(() => {
         dispath(getDataCards())
-        dispath(getDataFetchNavigation())
+        dispath(getDataNavigation())
     }, [])
 
     const { cards, getNavigationMenu } = useTypeSelector(state => state.data)

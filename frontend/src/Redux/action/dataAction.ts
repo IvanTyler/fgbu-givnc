@@ -21,7 +21,7 @@ export const getDataCards = () => {
     }
 }
 
-export const getDataFetchNavigation = () => {
+export const getDataNavigation = () => {
     return async (dispath: Dispatch<getDataActionType>) => {
         const response = await axios.get<any>(`${BACKEND_HOST}`)
         try {

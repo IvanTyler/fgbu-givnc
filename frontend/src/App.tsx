@@ -1,14 +1,22 @@
 import { BrowserRouter } from 'react-router-dom';
 import './normalize.css'
 import './App.scss'
-import { useGetCards } from './Hooks/useGetData';
+import { Header } from './Components/Header/Header';
+import { Wrapper } from './Components/Wrapper/Wrapper';
+import { Main } from './Components/Main/Main';
+import { ObjectRegistry } from './Components/ObjectRegistry/ObjectRegistry';
 
 function App() {
-const { cards } = useGetCards()
-console.log(cards);
 
   return (
-    <div>hello</div>
+    <Wrapper>
+      <BrowserRouter>
+        <Header />
+      </BrowserRouter>
+      <Main>
+        <ObjectRegistry />
+      </Main>
+    </Wrapper>
   );
 }
 

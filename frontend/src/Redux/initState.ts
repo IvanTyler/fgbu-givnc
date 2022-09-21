@@ -3,8 +3,8 @@ import { ICards, INavigation } from "../Interfaces/interface"
 
 export interface IGetData {
     cards: ICards[],
-    error: null | string;
     getNavigationMenu: INavigation[]
+    error: null | string;
 }
 
 export const initState: IGetData = {
