@@ -8,11 +8,15 @@ export const FormAdvancedSearch: React.FC = () => {
 
     const { cards } = useGetCards()
 
+    const filterNameRegions: string[] = cards.map((el: any) => el.region)
+
+    const filteringRepeatregions: string[] = filterNameRegions.filter((el: any, index) => filterNameRegions.indexOf(el) === index)
+    
     const [listRegions, setListRegions] = useState(false)
     const regionTitle = useRef<HTMLDivElement>(null)
-    
+
     const showListRegions = () => setListRegions(prev => !prev)
-    const setReginTitle = (nameRegion: string) => regionTitle.current!.innerText = nameRegion;
+    const filterRegions = (nameRegion: string) => regionTitle.current!.innerText = nameRegion;
 
     return (
         <form className={style.formAdvancedSearch}>
@@ -41,14 +45,14 @@ export const FormAdvancedSearch: React.FC = () => {
                     </div>
                     {listRegions && <ul className={style.formAdvancedSearch__regionsList}>
                         {
-                            cards.length ?
-                                cards.map((item) => {
+                            filteringRepeatregions.length ?
+                            filteringRepeatregions.map((el, index) => {
                                     return <li
-                                        key={item.id}
+                                        key={index}
                                         className={style.formAdvancedSearch__regionsItem}
-                                        onClick={() => setReginTitle(item.region)}
+                                        onClick={() => filterRegions(el)}
                                     >
-                                        {item.region}
+                                        {el}
                                     </li>
                                 }) : null
                         }

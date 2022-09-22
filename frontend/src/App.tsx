@@ -6,6 +6,8 @@ import { Wrapper } from './Components/Wrapper/Wrapper';
 import { Main } from './Components/Main/Main';
 import { ObjectRegistry } from './Components/ObjectRegistry/ObjectRegistry';
 import { AdvancedSearch } from './Components/AdvancedSearch/AdvancedSearch';
+import { CountCards } from './Components/CountCards/CountCards';
+import { Cards } from './Components/Cards/Cards';
 
 function App() {
 
@@ -17,6 +19,8 @@ function App() {
       <Main>
         <ObjectRegistry />
         <AdvancedSearch />
+        <CountCards />
+        <Cards />
       </Main>
     </Wrapper>
   );

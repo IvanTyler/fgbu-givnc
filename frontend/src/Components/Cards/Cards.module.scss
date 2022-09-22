@@ -1,0 +1,11 @@
+.sectionCards {
+    &__container {
+        margin-top: 40px;
+    }
+
+    &__list {
+        display: flex;
+        flex-wrap: wrap;
+        margin: -8px;
+    }
+}
