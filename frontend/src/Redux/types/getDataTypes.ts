@@ -2,6 +2,7 @@ export enum GetDataActionTypesEnum {
     GET_DATA_CARDS = 'GET_DATA_CARDS',
     GET_DATA_ERROR = 'GET_DATA_ERROR',
     GET_DATA_NAVIGATION = 'GET_DATA_NAVIGATION',
+    FILTER_CARDS = 'FILTER_CARDS',
 }
 
 export interface GetDataAction {
@@ -19,5 +20,14 @@ export interface GetDataErrorAction {
     payload: string;
 }
 
+export interface GetDataFilterRegions {
+    type: GetDataActionTypesEnum.FILTER_CARDS;
+    payload: any;
+}
 
-export type getDataActionType = GetDataAction | GetDataErrorAction | GetDataNavigationAction
+
+export type getDataActionType =
+    GetDataAction |
+    GetDataErrorAction |
+    GetDataNavigationAction |
+    GetDataFilterRegions

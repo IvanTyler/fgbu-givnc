@@ -11,7 +11,7 @@ export const useGetCards = () => {
         dispath(getDataNavigation())
     }, [])
 
-    const { cards, getNavigationMenu } = useTypeSelector(state => state.data)
+    const { cards, getNavigationMenu, cardsCopy } = useTypeSelector(state => state.data)
 
-    return { getNavigationMenu, cards }
+    return { getNavigationMenu, cards, cardsCopy }
 }

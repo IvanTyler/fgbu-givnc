@@ -3,20 +3,23 @@ import style from './FormAdvancedSearch.module.scss'
 import InputStyle from '../../assets/styles/InputStyle.module.scss'
 import { useGetCards } from "../../Hooks/useGetData";
 import { useRef, useState } from 'react';
+import { filterCardsAction } from "../../Redux/action/dataAction";
+import { useDispatch } from "react-redux";
 
 export const FormAdvancedSearch: React.FC = () => {
-
+    const dispatch = useDispatch()
     const { cards } = useGetCards()
 
-    const filterNameRegions: string[] = cards.map((el: any) => el.region)
+    const regionsArr = ['Сахалинская область', 'Вологодская область', 'Волгоградская область', 'Липецкая область', 'Смоленская область']
 
-    const filteringRepeatregions: string[] = filterNameRegions.filter((el: any, index) => filterNameRegions.indexOf(el) === index)
-    
     const [listRegions, setListRegions] = useState(false)
     const regionTitle = useRef<HTMLDivElement>(null)
 
     const showListRegions = () => setListRegions(prev => !prev)
-    const filterRegions = (nameRegion: string) => regionTitle.current!.innerText = nameRegion;
+    const filterRegions = (nameRegion: string) => {
+        regionTitle.current!.innerText = nameRegion;
+        dispatch(filterCardsAction(nameRegion))
+    }
 
     return (
         <form className={style.formAdvancedSearch}>
@@ -45,8 +48,8 @@ export const FormAdvancedSearch: React.FC = () => {
                     </div>
                     {listRegions && <ul className={style.formAdvancedSearch__regionsList}>
                         {
-                            filteringRepeatregions.length ?
-                            filteringRepeatregions.map((el, index) => {
+                            regionsArr.length ?
+                                regionsArr.map((el, index) => {
                                     return <li
                                         key={index}
                                         className={style.formAdvancedSearch__regionsItem}

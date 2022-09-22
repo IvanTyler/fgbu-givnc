@@ -37,3 +37,10 @@ export const getDataNavigation = () => {
         }
     }
 }
+
+export const filterCardsAction = (region: string) => {
+    return {
+        type: GetDataActionTypesEnum.FILTER_CARDS,
+        payload: region,
+    }
+}
