@@ -13,6 +13,10 @@ export const getDataReucer = (state = initState, action: getDataActionType): IGe
             return {
                 ...state, cardsCopy: state.cards.filter((el: any) => el.region === action.payload)
             }
+        case GetDataActionTypesEnum.FILTER_SEARCH_TITLE:
+            return {
+                ...state, cardsCopy: state.cards.filter((el: any, index) => el.title.toLowerCase().indexOf(action.payload.toLowerCase()) >= 0)
+            }
         default:
             return state
     }

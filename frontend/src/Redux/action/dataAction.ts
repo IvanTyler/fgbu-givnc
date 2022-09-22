@@ -44,3 +44,10 @@ export const filterCardsAction = (region: string) => {
         payload: region,
     }
 }
+
+export const searchCardsTitleAction = (title: string) => {
+    return {
+        type: GetDataActionTypesEnum.FILTER_SEARCH_TITLE,
+        payload: title,
+    }
+}

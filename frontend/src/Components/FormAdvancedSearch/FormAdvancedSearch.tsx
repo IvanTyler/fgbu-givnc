@@ -3,8 +3,9 @@ import style from './FormAdvancedSearch.module.scss'
 import InputStyle from '../../assets/styles/InputStyle.module.scss'
 import { useGetCards } from "../../Hooks/useGetData";
 import { useRef, useState } from 'react';
-import { filterCardsAction } from "../../Redux/action/dataAction";
+import { filterCardsAction, searchCardsTitleAction } from "../../Redux/action/dataAction";
 import { useDispatch } from "react-redux";
+import { eventWrapper } from "@testing-library/user-event/dist/utils";
 
 export const FormAdvancedSearch: React.FC = () => {
     const dispatch = useDispatch()
@@ -13,16 +14,30 @@ export const FormAdvancedSearch: React.FC = () => {
     const regionsArr = ['Сахалинская область', 'Вологодская область', 'Волгоградская область', 'Липецкая область', 'Смоленская область']
 
     const [listRegions, setListRegions] = useState(false)
+    const [valueSearch, setValueSearch] = useState('')
+
     const regionTitle = useRef<HTMLDivElement>(null)
 
     const showListRegions = () => setListRegions(prev => !prev)
+
     const filterRegions = (nameRegion: string) => {
         regionTitle.current!.innerText = nameRegion;
         dispatch(filterCardsAction(nameRegion))
     }
 
+    const inputChangeInputSearchValue = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setValueSearch(event.target.value)
+    }
+
+    const submitHandler = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault()
+        console.log(valueSearch);
+        dispatch(searchCardsTitleAction(valueSearch))
+        setValueSearch('')
+    }
+
     return (
-        <form className={style.formAdvancedSearch}>
+        <form className={style.formAdvancedSearch} onSubmit={submitHandler}>
             <header className={style.formAdvancedSearch__header}>
                 <h2 className={style.formAdvancedSearch__title}>
                     Расширенный поиск
@@ -32,6 +47,7 @@ export const FormAdvancedSearch: React.FC = () => {
                     type="search"
                     name="search"
                     placeholder="Контекстный поиск"
+                    onChange={inputChangeInputSearchValue}
                 />
             </header>
 
