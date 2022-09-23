@@ -13,7 +13,7 @@ export const Cards: React.FC = () => {
     const { cardsFilter } = useGetCards()
 
     const [currentPage, setCurrentPage] = useState(1)
-    const [currentPerPage] = useState(6)
+    const [currentPerPage] = useState(4)
 
     const lastCardsIndex = currentPage * currentPerPage
     const firstCardsIndex = lastCardsIndex - currentPerPage
