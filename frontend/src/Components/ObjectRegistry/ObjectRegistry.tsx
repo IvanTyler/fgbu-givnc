@@ -14,7 +14,7 @@ export const ObjectRegistry: React.FC = () => {
 
                 <input
                     className={InputStyle.input + ' ' + style.ObjectRegistry__search}
-                    type="search"
+                    type="text"
                     name="search"
                     placeholder="Поиск"
                 />

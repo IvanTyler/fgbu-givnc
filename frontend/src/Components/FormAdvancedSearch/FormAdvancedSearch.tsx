@@ -31,8 +31,7 @@ export const FormAdvancedSearch: React.FC = () => {
 
     const submitHandler = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
-        console.log(valueSearch);
-        dispatch(searchCardsTitleAction(valueSearch))
+        if (valueSearch.trim().length > 1) dispatch(searchCardsTitleAction(valueSearch))
         setValueSearch('')
     }
 
@@ -44,7 +43,7 @@ export const FormAdvancedSearch: React.FC = () => {
                 </h2>
                 <input
                     className={style.formAdvancedSearch__search}
-                    type="search"
+                    type="text"
                     name="search"
                     placeholder="Контекстный поиск"
                     onChange={inputChangeInputSearchValue}

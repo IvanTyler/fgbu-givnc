@@ -7,13 +7,13 @@ import style from './Cards.module.scss'
 import styleContainer from '../../assets/styles/container.module.scss'
 
 export const Cards: React.FC = () => {
-    const { cardsCopy } = useGetCards()
+    const { cardsFilter } = useGetCards()
     return (
         <section className={style.sectionCards}>
             <div className={styleContainer.container + ' ' + style.sectionCards__container}>
                 <ul className={style.sectionCards__list}>
                     <List
-                        items={cardsCopy}
+                        items={cardsFilter}
                         renderItem={(item: ICards) => <CardsItem item={item} key={item.id} />}
                     />
                 </ul>
