@@ -23,12 +23,12 @@ export const Cards: React.FC = () => {
     const paginate = (pageNumber: number) => setCurrentPage(pageNumber)
 
     const prevPage = () => setCurrentPage(prev => prev > 1 ? prev - 1 : prev)
-    const nextPage = (pageNumbers: number) => setCurrentPage(prev => prev < pageNumbers ? prev + 1 : prev)
+    const nextPage = () => setCurrentPage(prev => prev + 1)
 
     return (
         <section className={style.sectionCards}>
             <div className={styleContainer.container + ' ' + style.sectionCards__container}>
-                {cardsFilter.length ? <ul className={style.sectionCards__list}>
+                {currentCards.length ? <ul className={style.sectionCards__list}>
                     <List
                         items={currentCards}
                         renderItem={(item: ICards) => <CardsItem item={item} key={item.id} />}

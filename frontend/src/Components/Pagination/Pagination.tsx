@@ -9,7 +9,7 @@ interface poginationProps {
     currentPage: number;
     paginate(pageNumber: number): void;
     prevPage(): void;
-    nextPage(pageNumbersLength: number): void;
+    nextPage(): void;
 }
 
 export const Pagination: React.FC<poginationProps> = (
@@ -24,10 +24,12 @@ export const Pagination: React.FC<poginationProps> = (
 
     const pageNumbers: number[] = []
 
-
+    
+    
     for (let i = 1; i < Math.ceil(totalCountries / currentPerPage) + 1; i++) {
         pageNumbers.push(i)
     }
+    console.log(pageNumbers);
 
     return (
         <section className={style.sectionPagination}>
@@ -51,7 +53,7 @@ export const Pagination: React.FC<poginationProps> = (
                     })
                 }
             </ul>
-            <button className={style.sectionPagination__button + ' ' + style.sectionPagination__button_buttonNext} onClick={() => nextPage(pageNumbers.length)}>
+            <button className={style.sectionPagination__button + ' ' + style.sectionPagination__button_buttonNext} onClick={() => nextPage()}>
                 <img className={style.sectionPagination__arrowPage} src={paginationArrow} alt="page-next" />
             </button>
         </section>
