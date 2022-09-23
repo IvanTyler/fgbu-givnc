@@ -23,28 +23,31 @@ export const Cards: React.FC = () => {
     const paginate = (pageNumber: number) => setCurrentPage(pageNumber)
 
     const prevPage = () => setCurrentPage(prev => prev > 1 ? prev - 1 : prev)
-    const nextPage = () => setCurrentPage(prev => prev >= 0 ? prev + 1 : prev)
+    const nextPage = (pageNumbers: number) => setCurrentPage(prev => prev < pageNumbers ? prev + 1 : prev)
 
     return (
         <section className={style.sectionCards}>
             <div className={styleContainer.container + ' ' + style.sectionCards__container}>
-                <ul className={style.sectionCards__list}>
+                {cardsFilter.length ? <ul className={style.sectionCards__list}>
                     <List
                         items={currentCards}
                         renderItem={(item: ICards) => <CardsItem item={item} key={item.id} />}
                     />
-                </ul>
-
-                <BrowserRouter>
-                    <Pagination
-                        currentPerPage={currentPerPage}
-                        totalCountries={cardsFilter.length}
-                        paginate={paginate}
-                        prevPage={prevPage}
-                        nextPage={nextPage}
-                    />
-                </BrowserRouter>
+                </ul> :
+                    <p>«По вашему запросу ничего не
+                        найдено»</p>}
             </div>
+
+            {cardsFilter.length ? <BrowserRouter>
+                <Pagination
+                    currentPerPage={currentPerPage}
+                    totalCountries={cardsFilter.length}
+                    paginate={paginate}
+                    prevPage={prevPage}
+                    nextPage={nextPage}
+                    currentPage={currentPage}
+                />
+            </BrowserRouter> : null}
 
         </section>
     )

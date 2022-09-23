@@ -6,9 +6,10 @@ import paginationArrow from '../../assets/images/common/pagination-arrow.svg'
 interface poginationProps {
     currentPerPage: number;
     totalCountries: number;
+    currentPage: number;
     paginate(pageNumber: number): void;
     prevPage(): void;
-    nextPage(): void;
+    nextPage(pageNumbersLength: number): void;
 }
 
 export const Pagination: React.FC<poginationProps> = (
@@ -18,16 +19,16 @@ export const Pagination: React.FC<poginationProps> = (
         paginate,
         prevPage,
         nextPage,
+        currentPage,
     }) => {
 
     const pageNumbers: number[] = []
 
 
-    for (let i = 1; i < Math.ceil(totalCountries / currentPerPage); i++) {
+    for (let i = 1; i < Math.ceil(totalCountries / currentPerPage) + 1; i++) {
         pageNumbers.push(i)
     }
 
-    const [currentActivePage, setCurrentActivePage] = useState<number[]>(pageNumbers)
     return (
         <section className={style.sectionPagination}>
             <button className={style.sectionPagination__button + ' ' + style.sectionPagination__button_buttonPrev} onClick={() => prevPage()}>
@@ -40,14 +41,17 @@ export const Pagination: React.FC<poginationProps> = (
                             key={number}
                             className={style.sectionPagination__pageItem}>
                             <Link to={'#'}
-                                className={style.sectionPagination__link}
+                                className={currentPage === number ?
+                                    style.sectionPagination__link + ' ' + style.sectionPagination__link_current :
+                                    style.sectionPagination__link
+                                }
                                 onClick={() => paginate(number)}
                             >{number}</Link>
                         </li>
                     })
                 }
             </ul>
-            <button className={style.sectionPagination__button + ' ' + style.sectionPagination__button_buttonNext} onClick={() => nextPage()}>
+            <button className={style.sectionPagination__button + ' ' + style.sectionPagination__button_buttonNext} onClick={() => nextPage(pageNumbers.length)}>
                 <img className={style.sectionPagination__arrowPage} src={paginationArrow} alt="page-next" />
             </button>
         </section>
