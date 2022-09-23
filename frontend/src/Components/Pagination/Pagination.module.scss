@@ -1,0 +1,52 @@
+.sectionPagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+
+    &__button {
+        width: 60px;
+        height: 35px;
+        border: 0.5px solid rgba(25, 25, 25, 0.24);
+        border-radius: 20px;
+        background-color: transparent;
+        cursor: pointer;
+    }
+
+    &__button_buttonPrev {
+        margin-right: 16px;
+    }
+
+    &__button_buttonNext {
+        margin-left: 16px;
+    }
+
+    &__arrowPagePrev {
+        transform: rotate(180deg);
+    }
+
+    &__pageItem {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 35px;
+        height: 35px;
+        background-color: rgba(25, 25, 25, 0.08);
+        border-radius: 20px;
+
+        &:not(:last-child) {
+            margin-right: 16px;
+        }
+    }
+
+    &__link {
+        font-family: 'Roboto-regular';
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 19px;
+        color: #8791AA;
+    }
+
+    &__list {
+        display: flex;
+    }
+}

@@ -1,0 +1,98 @@
+.footer {
+    margin-top: 100px;
+    padding-bottom: 63px;
+
+    @media (max-width: 600px) {
+        margin-top: 40px;
+        padding-bottom: 30px;
+    }
+
+    &__row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        margin: -10px;
+
+        @media (max-width: 600px) {
+            flex-direction: column;
+        }
+    }
+
+    &__column {
+        margin: 10px;
+    }
+
+    &__column_HomePolenova {
+        display: flex;
+        align-items: center;
+        max-width: 460px;
+
+        @media (max-width: 600px) {
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            max-width: 278px;
+        }
+    }
+
+    &__iconHomePolenova {
+        margin-right: 20px;
+
+        @media (max-width: 600px) {
+            margin-right: 0;
+        }
+    }
+
+    &__homePolenova,
+    &__contactsTitle {
+        font-family: 'Heuristica-regular';
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 19px;
+        text-transform: uppercase;
+        color: #264576;
+    }
+
+    &__homePolenova {
+        display: inline-block;
+
+        @media (max-width: 600px) {
+            margin-top: 10px;
+        }
+    }
+
+    &__column_contacts {
+        display: flex;
+        flex-direction: column;
+        max-width: 239px;
+    }
+
+    &__contactsText {
+        margin-top: 10px;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 17px;
+        text-transform: uppercase;
+        color: #264576;
+    }
+
+    &__contactsTitle,
+    &__contactsText {
+        font-family: 'Heuristica-regular';
+    }
+
+    &__column_committeePreservation {
+        max-width: 278px;
+
+        @media (max-width: 600px) {
+            max-width: 258px;
+        }
+    }
+
+    &__iconCommitteePreservation {
+        object-fit: cover;
+        width: 100%;
+
+    }
+}

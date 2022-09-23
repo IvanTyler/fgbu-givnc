@@ -8,6 +8,7 @@ import { ObjectRegistry } from './Components/ObjectRegistry/ObjectRegistry';
 import { AdvancedSearch } from './Components/AdvancedSearch/AdvancedSearch';
 import { CountCards } from './Components/CountCards/CountCards';
 import { Cards } from './Components/Cards/Cards';
+import { Footer } from './Components/Footer/Footer';
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
         <CountCards />
         <Cards />
       </Main>
+      <Footer />
     </Wrapper>
   );
 }
