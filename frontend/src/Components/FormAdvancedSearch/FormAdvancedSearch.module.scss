@@ -57,6 +57,13 @@
         }
     }
 
+    &__search_error {
+        border: 1px solid red;
+        &::placeholder {
+            color: red
+        }
+    }
+
     &__list {
         margin-top: 30px;
         display: flex;

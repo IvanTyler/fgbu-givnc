@@ -1,19 +1,21 @@
 import React from "react";
 import style from './FormAdvancedSearch.module.scss'
 import InputStyle from '../../assets/styles/InputStyle.module.scss'
-import { useGetCards } from "../../Hooks/useGetData";
 import { useRef, useState } from 'react';
 import { filterCardsAction, searchCardsTitleAction } from "../../Redux/action/dataAction";
 import { useDispatch } from "react-redux";
-import { eventWrapper } from "@testing-library/user-event/dist/utils";
 
-export const FormAdvancedSearch: React.FC = () => {
+interface formAdvancedSearchProps {
+    setCurrentPage(pageNumber: any): void
+}
+
+export const FormAdvancedSearch: React.FC<formAdvancedSearchProps> = ({ setCurrentPage }) => {
     const dispatch = useDispatch()
-    const { cards } = useGetCards()
 
     const regionsArr = ['Сахалинская область', 'Вологодская область', 'Волгоградская область', 'Липецкая область', 'Смоленская область']
 
     const [listRegions, setListRegions] = useState(false)
+    const [inputSearchError, setInputSearchError] = useState(false)
     const [valueSearch, setValueSearch] = useState('')
 
     const regionTitle = useRef<HTMLDivElement>(null)
@@ -21,6 +23,7 @@ export const FormAdvancedSearch: React.FC = () => {
     const showListRegions = () => setListRegions(prev => !prev)
 
     const filterRegions = (nameRegion: string) => {
+        setCurrentPage((prev: any) => 1)
         regionTitle.current!.innerText = nameRegion;
         dispatch(filterCardsAction(nameRegion))
     }
@@ -31,7 +34,11 @@ export const FormAdvancedSearch: React.FC = () => {
 
     const submitHandler = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
-        if (valueSearch.trim().length > 1) dispatch(searchCardsTitleAction(valueSearch))
+        valueSearch.trim().length > 1 ?
+            dispatch(searchCardsTitleAction(valueSearch)) &&
+            setInputSearchError(prev => false) :
+            setInputSearchError(prev => true)
+
         setValueSearch('')
     }
 
@@ -42,7 +49,11 @@ export const FormAdvancedSearch: React.FC = () => {
                     Расширенный поиск
                 </h2>
                 <input
-                    className={style.formAdvancedSearch__search}
+                    className={inputSearchError ?
+                        style.formAdvancedSearch__search + ' ' +
+                        style.formAdvancedSearch__search_error :
+                        style.formAdvancedSearch__search
+                    }
                     type="text"
                     name="search"
                     placeholder="Контекстный поиск"

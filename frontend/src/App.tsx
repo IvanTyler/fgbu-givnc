@@ -5,10 +5,8 @@ import { Header } from './Components/Header/Header';
 import { Wrapper } from './Components/Wrapper/Wrapper';
 import { Main } from './Components/Main/Main';
 import { ObjectRegistry } from './Components/ObjectRegistry/ObjectRegistry';
-import { AdvancedSearch } from './Components/AdvancedSearch/AdvancedSearch';
-import { CountCards } from './Components/CountCards/CountCards';
-import { Cards } from './Components/Cards/Cards';
 import { Footer } from './Components/Footer/Footer';
+import { WrapperPaginationCards } from './Components/WrapperPaginationCards/WrapperPaginationCards';
 
 function App() {
 
@@ -19,9 +17,7 @@ function App() {
       </BrowserRouter>
       <Main>
         <ObjectRegistry />
-        <AdvancedSearch />
-        <CountCards />
-        <Cards />
+        <WrapperPaginationCards />
       </Main>
       <Footer />
     </Wrapper>
