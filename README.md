@@ -5,5 +5,5 @@
 - Сделал пагинацию карточек
 
 Технологии которые использовал:
-Beckend: node js
-Frontend: react + redux, typeScript, scss
+- Beckend: node js
+- Frontend: react + redux, typeScript, scss
